@@ -1,0 +1,18 @@
+<div class="overflow-hidden transform w-full">
+  <!-- Conteúdo da Tabela -->
+  <div
+    class="grid grid-cols-5 text-gray-900 font-medium divide-x divide-gray-300"
+  >
+    <span class="px-3 py-3">{{ product.nomeProduto }}</span>
+    <span class="px-3 py-3 text-green-600">R$ {{ product.valorProduto }}</span>
+    <span class="px-3 py-3">{{ product.estoque }}</span>
+    <span class="px-3 py-3 uppercase">{{ product.cidade.nome }}</span>
+    <span class="px-3 py-3 flex justify-end">
+      <button
+        class="w-fit bg-blue-500 text-white px-6 py-2 rounded-md hover:bg-blue-600 transition-all cursor-pointer"
+      >
+        Editar
+      </button>
+    </span>
+  </div>
+</div>

@@ -1,0 +1,25 @@
+<div class="products-page flex flex-col pt-20 container mx-auto">
+  <h2 class="text-2xl font-bold mb-4">Lista de Produtos</h2>
+
+  <div class="border border-gray-300 ">
+    <!-- Cabeçalho da Tabela -->
+    <div
+      class="grid grid-cols-5 text-gray-700 font-semibold uppercase border-b border-gray-400 bg-gray-100 divide-x divide-gray-400"
+    >
+      <span class="px-3 py-2">Nome</span>
+      <span class="px-3 py-2">Preço</span>
+      <span class="px-3 py-2">Estoque</span>
+      <span class="px-3 py-2">Cidade</span>
+      <span class="px-3 py-2"></span>
+    </div>
+
+    <!-- Lista de Produtos -->
+    <div class="products-container flex flex-col">
+      <app-product-card
+        *ngFor="let product of products"
+        [product]="product"
+        class="border-b border-gray-300"
+      ></app-product-card>
+    </div>
+  </div>
+</div>
