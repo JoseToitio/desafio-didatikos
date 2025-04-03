@@ -18,9 +18,9 @@ export class LoginComponent {
   constructor(private authService: AuthService, private router: Router) {}
   onLogin(formData: ILogin) {
     this.authService.login(formData).subscribe({
-      next: (token: string) => {
-        localStorage.setItem('token', token);
-        // this.router.navigate(['/products']);
+      next: (token: {token: string}) => {
+        localStorage.setItem('token', token.token);
+        this.router.navigate(['/products']);
       },
       error: (err) => {
         console.error('Erro no login:', err);

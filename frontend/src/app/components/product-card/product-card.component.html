@@ -8,11 +8,13 @@
     <span class="px-3 py-3">{{ product.estoque }}</span>
     <span class="px-3 py-3 uppercase">{{ product.cidade.nome }}</span>
     <span class="px-3 py-3 flex justify-end">
-      <button
+      <a [routerLink]="['/edit-product', product.codProduto]">
+        <button
         class="w-fit bg-blue-500 text-white px-6 py-2 rounded-md hover:bg-blue-600 transition-all cursor-pointer"
       >
         Editar
       </button>
+      </a>
     </span>
   </div>
 </div>
