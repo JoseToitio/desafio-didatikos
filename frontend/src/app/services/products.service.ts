@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 export interface Product {
-  codProduto: number;
+  codProduto?: number;
   nomeProduto: string;
   valorProduto: number;
   estoque: number;
@@ -14,7 +14,7 @@ export interface Product {
 }
 
 export interface RequestProduct {
-  codProduto: number;
+  codProduto?: number;
   nomeProduto: string;
   valorProduto: number;
   estoque: number;
@@ -41,5 +41,12 @@ export class ProductsService {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.put<Product>(`${this.apiUrl}/${id}`, product, { headers });
+  }
+
+  createProduct(product: RequestProduct): Observable<Product> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+    return this.http.post<Product>(this.apiUrl, product, { headers });
   }
 }
