@@ -1,7 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Product, ProductsService, RequestProduct } from '../../services/products.service';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  Product,
+  ProductsService,
+  RequestProduct,
+} from '../../services/products.service';
+import {
+  FormBuilder,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { City, CityService } from '../../services/city.service';
 
@@ -32,7 +42,10 @@ export class EditProductComponent implements OnInit {
     this.productService.getProductById(this.productId).subscribe((product) => {
       this.productForm = this.fb.group({
         nomeProduto: [product.nomeProduto, Validators.required],
-        valorProduto: [product.valorProduto, [Validators.required, Validators.min(0)]],
+        valorProduto: [
+          product.valorProduto,
+          [Validators.required, Validators.min(0)],
+        ],
         estoque: [product.estoque, [Validators.required, Validators.min(0)]],
         cidade: [product.cidade.id, Validators.required],
       });
@@ -55,9 +68,20 @@ export class EditProductComponent implements OnInit {
       cidadeId: this.productForm.value.cidade,
     };
 
-    this.productService.updateProduct(this.productId, updatedProduct).subscribe(() => {
-      alert('Produto atualizado com sucesso!');
-      this.router.navigate(['/products']);
-    });
+    this.productService
+      .updateProduct(this.productId, updatedProduct)
+      .subscribe(() => {
+        alert('Produto atualizado com sucesso!');
+        this.router.navigate(['/products']);
+      });
+  }
+
+  removeProduct() {
+    if (confirm('Tem certeza que deseja remover este produto?')) {
+      this.productService.removeProduct(this.productId).subscribe(() => {
+        alert('Produto removido com sucesso!');
+        this.router.navigate(['/products']);
+      });
+    }
   }
 }

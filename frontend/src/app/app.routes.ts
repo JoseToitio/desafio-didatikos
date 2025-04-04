@@ -13,7 +13,7 @@ export const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'products', component: ProductComponent },
   { path: 'edit-product/:id', component: EditProductComponent, canActivate: [AuthGuard] },
-  { path: 'create-product', component: CreateProductComponent }
+  { path: 'create-product', component: CreateProductComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({

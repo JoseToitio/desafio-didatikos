@@ -1,7 +1,5 @@
 <div class="flex min-h-screen items-center justify-center bg-gray-100">
-  <div
-    class="container mx-auto max-w-lg bg-white p-6 rounded-lg shadow-lg"
-  >
+  <div class="container mx-auto max-w-lg bg-white p-6 rounded-lg shadow-lg">
     <h2 class="text-2xl font-bold mb-4">Editar Produto</h2>
 
     <form [formGroup]="productForm" (ngSubmit)="updateProduct()">
@@ -43,13 +41,21 @@
           </option>
         </select>
       </div>
-
+      <div class="flex items-center gap-2">
+        <button
+        type="button"
+        (click)="removeProduct()"
+        class="w-full bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 transition-all mt-2"
+      >
+        Remover Produto
+      </button>
       <button
         type="submit"
-        class="w-full bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition-all"
+        class="w-full bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition-all mt-2"
       >
         Salvar Alterações
       </button>
+      </div>
     </form>
   </div>
 </div>

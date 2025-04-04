@@ -65,4 +65,10 @@ export class AuthService {
     localStorage.removeItem('token');
     this.userSubject.next(null);
   }
+
+  getToken() {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return headers
+  }
 }
