@@ -4,9 +4,14 @@
 
     <!-- Menu Desktop -->
     <div class="hidden md:flex space-x-6">
-      <a class="hover:text-gray-300 transition" routerLink="/create-product">Create Product</a>
-      <a class="hover:text-gray-300 transition" routerLink="/login">Login</a>
-      <a class="hover:text-gray-300 transition" routerLink="/register">Registrar</a>
+      <a *ngIf="isLoggedIn" class="hover:text-gray-300 transition" routerLink="/create-product">Create Product</a>
+      <a *ngIf="!isLoggedIn" class="hover:text-gray-300 transition" routerLink="/login">Login</a>
+      <a *ngIf="!isLoggedIn" class="hover:text-gray-300 transition" routerLink="/register">Registrar</a>
+
+      <div *ngIf="isLoggedIn" class="flex items-center space-x-3">
+        <span class="text-gray-300">Olá, {{ userName }}</span>
+        <a (click)="logout()" class="hover:text-red-400 transition cursor-pointer">Logout</a>
+      </div>
     </div>
 
     <!-- Botão de Menu Mobile -->
@@ -20,8 +25,13 @@
   <!-- Menu Mobile -->
   <div *ngIf="menuOpen" class="md:hidden mt-4 flex flex-col items-center space-y-4 bg-gray-900 bg-opacity-90 backdrop-blur-lg p-4 rounded-lg shadow-md">
     <a class="hover:text-gray-300 transition" routerLink="/create-product">Create Product</a>
-    <a class="hover:text-gray-300 transition" routerLink="/login">Login</a>
-    <a class="hover:text-gray-300 transition" routerLink="/register">Registrar</a>
+    <a *ngIf="!isLoggedIn" class="hover:text-gray-300 transition" routerLink="/login">Login</a>
+    <a *ngIf="!isLoggedIn" class="hover:text-gray-300 transition" routerLink="/register">Registrar</a>
+
+    <div *ngIf="isLoggedIn" class="flex flex-col items-center space-y-2">
+      <span class="text-gray-300">Olá, {{ userName }}</span>
+      <a (click)="logout()" class="hover:text-red-400 transition cursor-pointer">Logout</a>
+    </div>
   </div>
 </nav>
 
