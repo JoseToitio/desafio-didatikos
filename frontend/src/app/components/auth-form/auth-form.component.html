@@ -1,0 +1,53 @@
+<div class="flex min-h-screen items-center justify-center bg-gray-100">
+  <div class="auth-form bg-white shadow-md rounded-lg p-6 w-full max-w-md mx-auto">
+    <h2 class="text-2xl font-semibold text-center text-gray-800 mb-4">{{ title }}</h2>
+
+    <form (ngSubmit)="submitForm()" class="space-y-4">
+      <div *ngIf="isRegister">
+        <label for="name" class="block text-gray-700 font-medium">Nome:</label>
+        <input id="name" type="text" [(ngModel)]="formData.name" name="name"
+          class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+          required />
+      </div>
+
+      <div>
+        <label for="cpf" class="block text-gray-700 font-medium">CPF:</label>
+        <input id="cpf" type="text" [(ngModel)]="formData.cpf" name="cpf"
+          class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+          required />
+      </div>
+
+      <div>
+        <label for="password" class="block text-gray-700 font-medium">Senha:</label>
+        <input id="password" type="password" [(ngModel)]="formData.password" name="password"
+          class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+          required />
+      </div>
+
+      <div *ngIf="isRegister">
+        <label for="role" class="block text-gray-700 font-medium">Role:</label>
+        <select id="role" [(ngModel)]="formData.role" name="role"
+          class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+          <option value="USER">User</option>
+          <option value="ADMIN">Admin</option>
+        </select>
+      </div>
+
+      <div>
+        <p class="text-red-600">{{errorMessage}}</p>
+      </div>
+
+      <p class="text-center mt-4 text-gray-600 text-sm">
+        {{isRegister ? 'Já tem uma conta?' : 'Ainda não tem uma conta?'}}
+        <a [routerLink]="isRegister ? '/login' : '/register'" class="text-indigo-600 hover:underline cursor-pointer">
+          {{isRegister ? 'Entrar' : 'Criar uma conta'}}
+        </a>
+      </p>
+
+      <button type="submit"
+        class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 rounded-md transition">
+        {{ isRegister ? 'Registrar' : 'Entrar' }}
+      </button>
+    </form>
+  </div>
+</div>
